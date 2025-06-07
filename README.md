@@ -21,7 +21,7 @@ NICNAC16-DISASS is a disassembler specifically designed for the [NICNAC16 CPU ar
 ## Setup Instructions
 
 ### Prerequisites
-- Java Development Kit (JDK) 8 or higher
+- A C++20-compatible compiler (e.g., `g++` 10+, `clang++` 11+, or MSVC 2019)
 - Basic understanding of assembly language and machine code concepts
 
 ### Installation
@@ -31,10 +31,10 @@ NICNAC16-DISASS is a disassembler specifically designed for the [NICNAC16 CPU ar
    cd NICNAC16-DISASS
    ```
 
-2. Compile the source code:
+2. Build the source code:
    ```
-   mkdir -p bin
-   javac -d bin -sourcepath src src/de/czempin/nicnac16/disassembler/Main.java
+   mkdir -p build
+   g++ -std=c++20 -Wall -Wextra -pedantic cpp/disassembler.cpp -o build/disassembler
    ```
 
 ### Running the Disassembler
@@ -42,7 +42,7 @@ NICNAC16-DISASS is a disassembler specifically designed for the [NICNAC16 CPU ar
 
 2. Run the disassembler:
    ```
-   java -cp bin de.czempin.nicnac16.disassembler.Main program.oa
+   ./build/disassembler program.oa
    ```
 
 3. The disassembler will generate assembly code output that represents the original machine code
@@ -62,7 +62,7 @@ NICNAC16-DISASS is a disassembler specifically designed for the [NICNAC16 CPU ar
 - Not compatible with other CPU architectures
 
 ## Repository Structure
-- `src/de/czempin/nicnac16/disassembler/` - Main disassembler source code
+- `cpp/disassembler.cpp` - Main disassembler source code
 - `testDisassembly.oa` - Test file for disassembly
 
 ## Disassembly Features
