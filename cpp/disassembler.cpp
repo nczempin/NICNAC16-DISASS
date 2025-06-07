@@ -21,11 +21,11 @@ int main(int argc, char* argv[]) {
     std::string line;
     while (std::getline(input, line)) {
         std::cout << line << '\n';
-        if (line.size() < 4) {
+        if (line.size() < kInstructionBits) {
             std::cerr << "Line too short: " << line << '\n';
             continue;
         }
-        std::string instruction = line.substr(0, 4);
+        std::string instruction = line.substr(0, kInstructionBits);
         int code = std::stoi(instruction, nullptr, 2);
         if (code < 0 || code >= opcodes.size()) {
             std::cerr << "Invalid opcode: " << code << " in line: " << line << '\n';
