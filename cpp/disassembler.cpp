@@ -27,6 +27,10 @@ int main(int argc, char* argv[]) {
         }
         std::string instruction = line.substr(0, 4);
         int code = std::stoi(instruction, nullptr, 2);
+        if (code < 0 || code >= opcodes.size()) {
+            std::cerr << "Invalid opcode: " << code << " in line: " << line << '\n';
+            continue;
+        }
         std::cout << instruction << ", " << code << ": " << opcodes.at(code) << '\n';
     }
 
